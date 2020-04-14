@@ -157,7 +157,7 @@ downloaderprep()
     #until name (i.e DSC0****) is left
     cp link.txt Availablephoto.txt
     sed -i 's/.*\/D/D/g; s/.jpg//g' Availablephoto.txt
-    mkdir images
+    mkdir -p images
 }
 
 main()
