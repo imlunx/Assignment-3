@@ -29,9 +29,9 @@ getoneimage()
     filesizekb=$(awk -v filesizekb=$filesize 'BEGIN { printf "%.2f\n", filesizekb / 1000 }')
     echo "Downloading DSC0$id, with the file name DSC0$id.jpg, with a file size of $filesizekb kb..." 
     echo "Download Complete"
-    echo "PROGRAM Exitting.."
+    echo "PROGRAM FINISHED"
     #move downloaded images into the image directory
-    mv DSC0$id.jpg images
+    mv DSC0$id.jpg ./images
     fi
     
  
@@ -55,7 +55,7 @@ getallimage()
         echo -e "Download Complete\n"
     done < link.txt
     #move all downloaded image to image directory
-    mv *.jpg images
+    mv *.jpg ./images
     echo "PROGRAM FINISHED"
 }
 
@@ -97,7 +97,7 @@ getimagerange()
         echo "Downloading DSC0$name, with the file name DSC0$name.jpg, with a file size of $filesizekb kb..." 
         echo -e "Download Complete\n"
         #move downloaded images into image dir
-        mv *.jpg images
+        mv *.jpg ./images
         fi
 
     done
@@ -123,7 +123,7 @@ randomdownload()
     echo "Downloading $name, with the file name $name.jpg, with a file size of $filesizekb kb..." 
     echo -e "Download Complete\n"
     #move all downloaded file into image dir
-    mv *.jpg images
+    mv *.jpg ./images
     #increase count so while loop will end
     ((times+=1))
     done
@@ -157,6 +157,7 @@ downloaderprep()
     #until name (i.e DSC0****) is left
     cp link.txt Availablephoto.txt
     sed -i 's/.*\/D/D/g; s/.jpg//g' Availablephoto.txt
+    mkdir images
 }
 
 main()
